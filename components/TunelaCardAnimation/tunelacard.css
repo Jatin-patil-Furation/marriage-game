@@ -1,0 +1,236 @@
+body {
+  background-color: #ccc;
+}
+
+.Tunelacontainer {
+  /* border: 2px solid red; */
+   /* width: 1660px; */
+   text-align: center;
+  align-items: center;
+  margin: auto;
+  -webkit-perspective:  100%;
+  perspective: 100%;
+}
+
+.Tunelacard {
+  /* border: 1px solid yellow; */
+  /* display: inline-block; */
+  position: relative;
+  box-sizing: border-box;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  -webkit-transition: all 0.8s ease-out;
+  -moz-transition: all 0.8s ease-out;
+  -o-transition: all 0.8s ease-out;
+  transition: all 0.8s ease-out;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+}
+
+.Tunelacard .front,
+.Tunelacard .back {
+  /* border: 1px solid red; */
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* -webkit-border-radius: 12px; */
+  /* border-radius: 12px; */
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.Tunelacard .front {
+  background-color: #fff;
+  text-align: center;
+}
+
+.Tunelacard .back {
+  background-color: #0a47c1;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* Use numeric entities */
+
+.Tunelacard .front::after {
+  /* border: 1px solid black; */
+  display: block;
+  font-size: 1em;
+  margin: 30% 4% 2% 22%;
+}
+
+.Tunelacard[data-suite="spade"],
+.Tunelacard[data-suite="club"] {
+  color: black;
+}
+
+.Tunelacard[data-suite="heart"],
+.Tunelacard[data-suite="diamond"] {
+  color: red;
+}
+
+.Tunelacard[data-suite="spade"] .front::after,
+.Tunelacard[data-suite="spade"] .first::after,
+.Tunelacard[data-suite="spade"] .last::before {
+  /* &spade; */
+  content: "\2660";
+}
+
+.Tunelacard[data-suite="club"] .front::after,
+.Tunelacard[data-suite="club"] .first::after,
+.Tunelacard[data-suite="club"] .last::before {
+  /* &club; */
+  content: "\2663";
+}
+
+.Tunelacard[data-suite="heart"] .front::after,
+.Tunelacard[data-suite="heart"] .first::after,
+.Tunelacard[data-suite="heart"] .last::before {
+  /* &heart; */
+  content: "\2665";
+}
+
+.Tunelacard[data-suite="diamond"] .front::after,
+.Tunelacard[data-suite="diamond"] .first::after,
+.Tunelacard[data-suite="diamond"] .last::before {
+  /* &diams; */
+  content: "\2666";
+}
+
+/* Tunelacard values */
+
+.Tunelacard .front::after,
+.Tunelacard .front::before {
+  /* border: 2px solid red; */
+  display: block;
+  position: absolute;
+  top: -.4rem;
+  left: .5rem;
+}
+
+.Tunelacard span:first-child {
+  /* border: 2px solid green; */
+  top: .5rem;
+  left: .4rem;
+}
+
+.Tunelacard span:last-child {
+   /* border: 2px solid blue; */
+   bottom: 10px;
+   right: .0rem;
+}
+
+.Tunelacard .last::after {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.Tunelacard span {
+  /* border: 2px solid rgb(26, 220, 129); */
+  display: block;
+  position: absolute;
+}
+
+.Tunelacard span::before,
+.Tunelacard span::after {
+  /* border: 2px solid rgb(250, 136, 14); */
+  display: block;
+  line-height: 0.9em;
+}
+
+.Tunelacard[data-value="A"] span:first-child::before {
+  content: "A";
+}
+
+.Tunelacard[data-value="K"] span:first-child::before {
+  content: "K";
+}
+
+.Tunelacard[data-value="Q"] span:first-child::before {
+  content: "Q";
+}
+
+.Tunelacard[data-value="J"] span:first-child::before{
+  content: "J";
+}
+
+.Tunelacard[data-value="10"] span:first-child::before{
+  content: "10";
+}
+
+.Tunelacard[data-value="9"] span:first-child::before {
+  content: "9";
+}
+
+.Tunelacard[data-value="8"] span:first-child::before {
+  content: "8";
+}
+
+.Tunelacard[data-value="7"] span:first-child::before {
+  content: "7";
+}
+
+.Tunelacard[data-value="6"] span:first-child::before {
+  content: "6";
+}
+
+.Tunelacard[data-value="5"] span:first-child::before {
+  content: "5";
+}
+
+.Tunelacard[data-value="4"] span:first-child::before {
+  content: "4";
+}
+
+.Tunelacard[data-value="2"] span:first-child::before {
+  content: "2";
+}
+
+.Tunelacard[data-value="3"] span:first-child::before
+ {
+  content: "3";
+}
+
+.Tunelacard[data-value2="Q"] span:first-child::before
+ {
+  content: "Q";
+}
+.Tunelacard[data-value3="3"] span:first-child::before
+ {
+  content: "3";
+}
+.Tunelacard[data-value4="3"] span:first-child::before
+ {
+  content: "3";
+}
+
+
+.Tunelacard .back::before {
+  border: 2px solid rgb(98, 5, 81);
+  display: block;
+  content: " ";
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: transparent repeat left top;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjNDAzYzNmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9IiMxZTI5MmQiPjwvcGF0aD4KPC9zdmc+");
+}

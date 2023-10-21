@@ -1,0 +1,301 @@
+body {
+  background-color: #ccc;
+}
+
+.marriagecontainer {
+   text-align: center;
+  align-items: center;
+  margin: auto;
+  -webkit-perspective:  100%;
+  perspective: 100%;
+}
+
+.marrigecard {
+  /* border: 1px solid yellow; */
+  display: inline-block;
+
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  -webkit-transition: all 0.8s ease-out;
+  -moz-transition: all 0.8s ease-out;
+  -o-transition: all 0.8s ease-out;
+  transition: all 0.8s ease-out;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+}
+
+
+/* Styles for the overlay */
+.overlay {
+  position: absolute;
+  background-color: rgba(31, 31, 31, 0.5); /* Semi-transparent background */
+  width: 100%;
+  height: 100%;
+  top: -30px;
+  left: 0;
+  z-index: 2; /* Should be higher than card z-index */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlayactive{
+   position: absolute;
+  background-color: rgba(31, 31, 31, 0.5); /* Semi-transparent background */
+  width: 100%;
+  height: 100%;
+  top: -30px;
+  left: 0;
+  z-index: 2; /* Should be higher than card z-index */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles for the card container */
+.marrigecard {
+  position: relative;
+  transition: transform 0.2s; /* Add a smooth transition for the pop-up effect */
+}
+/* Style for the card when clicked */
+.marrigecard.clicked {
+  transform: translateY(-50%); /* Move the card up by 50% of its height */
+}
+.marrigecard.selected .front {
+   position: relative;
+    opacity: 1;
+}
+   /*  active css */
+.marrigecard.active .front {
+   position: relative;
+    opacity: 1;
+}
+.marrigecard.active {
+  transform: translateY(-50%); /* Move the card up by 50% of its height */
+}
+
+
+.marrigecard .front,
+.marrigecard .back {
+  /* border: 2px solid red; */
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.marrigecard .front {
+  background-color: #fff;
+  text-align: center;
+}
+
+.marrigecard .back {
+  background-color: #0a47c1;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* Use numeric entities */
+
+.marrigecard .front::after {
+  /* border: 1px solid black; */
+  display: block;
+  font-size: 1.8em;
+  margin: 30% 4% 2% 22%;
+}
+
+.marrigecard[data-suite="joker"]{
+   background-image: url('/assets/marriage/joker.jipg');
+   /* border: 2px solid black; */
+}
+
+.marrigecard[data-suite="joker"] .front::after{
+   content:  url('/assets/marriage/joker.jipg');
+   /* border: 2px solid black; */
+}
+.marrigecard[data-suite="joker"]{
+  color: red;
+}
+
+.marrigecard[data-value="joker"] span:first-child::before,
+.marrigecard[data-value="joker"] span:last-child::after {
+  content: "joker";
+}
+
+
+.marrigecard[data-suite="spade"],
+.marrigecard[data-suite="club"] {
+  color: black;
+}
+
+.marrigecard[data-suite="heart"],
+.marrigecard[data-suite="diamond"] {
+  color: red;
+}
+
+.marrigecard[data-suite="spade"] .front::after,
+.marrigecard[data-suite="spade"] .first::after,
+.marrigecard[data-suite="spade"] .last::before {
+  /* &spade; */
+  content: "\2660";
+}
+
+.marrigecard[data-suite="club"] .front::after,
+.marrigecard[data-suite="club"] .first::after,
+.marrigecard[data-suite="club"] .last::before {
+  /* &club; */
+  content: "\2663";
+}
+
+.marrigecard[data-suite="heart"] .front::after,
+.marrigecard[data-suite="heart"] .first::after,
+.marrigecard[data-suite="heart"] .last::before {
+  /* &heart; */
+  content: "\2665";
+}
+
+.marrigecard[data-suite="diamond"] .front::after,
+.marrigecard[data-suite="diamond"] .first::after,
+.marrigecard[data-suite="diamond"] .last::before {
+  /* &diams; */
+  content: "\2666";
+}
+
+/* marrigecard values */
+
+.marrigecard .front::after,
+.marrigecard .front::before {
+  /* border: 2px solid red; */
+  display: block;
+  position: absolute;
+  top: .3rem;
+  left: 1px;
+}
+
+.marrigecard span:first-child {
+  /* border: 2px solid green; */
+  top: .5rem;
+  left: .4rem;
+}
+
+.marrigecard span:last-child {
+   /* border: 2px solid blue; */
+  bottom: 10px;
+  right: .0rem;
+}
+
+.marrigecard .last::after {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.marrigecard span {
+  display: block;
+  position: absolute;
+}
+
+.marrigecard span::before,
+.marrigecard span::after {
+  display: block;
+  line-height: 0.9em;
+}
+
+.marrigecard[data-value="A"] span:first-child::before,
+.marrigecard[data-value="A"] span:last-child::after {
+  content: "A";
+}
+
+.marrigecard[data-value="K"] span:first-child::before,
+.marrigecard[data-value="K"] span:last-child::after {
+  content: "K";
+}
+
+.marrigecard[data-value="Q"] span:first-child::before,
+.marrigecard[data-value="Q"] span:last-child::after {
+  content: "Q";
+}
+
+.marrigecard[data-value="J"] span:first-child::before,
+.marrigecard[data-value="J"] span:last-child::after {
+  content: "J";
+}
+
+.marrigecard[data-value="10"] span:first-child::before,
+.marrigecard[data-value="10"] span:last-child::after {
+  content: "10";
+}
+
+.marrigecard[data-value="9"] span:first-child::before,
+.marrigecard[data-value="9"] span:last-child::after {
+  content: "9";
+}
+
+.marrigecard[data-value="8"] span:first-child::before,
+.marrigecard[data-value="8"] span:last-child::after {
+  content: "8";
+}
+
+.marrigecard[data-value="7"] span:first-child::before,
+
+.marrigecard[data-value="7"] span:last-child::after {
+  content: "7";
+}
+
+.marrigecard[data-value="6"] span:first-child::before,
+.marrigecard[data-value="6"] span:last-child::after {
+  content: "6";
+}
+
+.marrigecard[data-value="5"] span:first-child::before,
+.marrigecard[data-value="5"] span:last-child::after {
+  content: "5";
+}
+
+.marrigecard[data-value="4"] span:first-child::before,
+.marrigecard[data-value="4"] span:last-child::after {
+  content: "4";
+}
+
+.marrigecard[data-value="2"] span:first-child::before,
+.marrigecard[data-value="2"] span:last-child::after {
+  content: "2";
+}
+
+.marrigecard[data-value="3"] span:first-child::before,
+.marrigecard[data-value="3"] span:last-child::after {
+  content: "3";
+}
+
+.marrigecard .back::before {
+  display: block;
+  content: " ";
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: transparent repeat left top;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjNDAzYzNmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9IiMxZTI5MmQiPjwvcGF0aD4KPC9zdmc+");
+}
